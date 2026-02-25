@@ -76,18 +76,39 @@ def _rag_search(
     ## -> 메타데이터 필터 구성 
     ##    RAG 품질의 핵심 = 필터 설계
     ## -------------------------------------
-    filters = {}
+    ## -------------------------------------
+    ## -> 메타데이터 필터 구성 (수정 버전)
+    ## -------------------------------------
+    conditions = []
 
-    # 권한 제한 우선 적용
+    # 1. 권한 제한 적용
     if allowed_types:
-        filters["doc_type"] = {"$in": allowed_types}
+        conditions.append({"doc_type": {"$in": allowed_types}})
 
-    # 사용자가 document_types를 지정하면 더 좁힘 (단, allowed_types 밖이면 결과 0이 나올 수 있음)
+    # 2. 사용자 지정 문서 유형 적용
     if document_types:
-        filters["doc_type"] = {"$in": document_types}
+        conditions.append({"doc_type": {"$in": document_types}})
 
+    # 3. 연도 필터 적용
     if after_year:
-        filters["year"] = {"$gte": after_year}
+        conditions.append({"year": {"$gte": after_year}})
+
+    # 최종 필터 조립
+    if len(conditions) > 1:
+        filters = {"$and": conditions}
+    elif len(conditions) == 1:
+        filters = conditions[0]
+    else:
+        filters = None
+
+    ## -------------------------------------
+    ## -> Vector DB 검색
+    ## -------------------------------------
+    docs = vector_db.similarity_search(
+        query,
+        k=top_k,
+        filter=filters  # 이제 안전하게 조립된 필터가 전달됩니다.
+    )
 
     ## -------------------------------------
     ## -> Vector DB 검색 + 메타데이터 필터 : 유사도 검색

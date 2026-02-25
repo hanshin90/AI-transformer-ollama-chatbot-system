@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Ollama 사이트  : https://ollama.com/
 
 OS에 맞는 버전으로 다운로드 후 설치
-설치 후 Ollama 실행
+설치 후 Ollama 실행 ollama.exe
 
 명령 프롬프트 실행
 cmd
@@ -48,3 +48,4 @@ python agent/agent_run.py
 ## 참고
 - Ollama가 실행 중이어야 하며, tool calling 지원 모델(예: qwen2.5)을 사용하세요.
 - `data/hr_policy_2024.pdf`는 예제 규정 PDF입니다.
+

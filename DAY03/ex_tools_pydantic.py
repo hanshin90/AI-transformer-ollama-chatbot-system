@@ -1,6 +1,6 @@
 # ==================================================================
 # Tool 생성
-# pip install -U email-validator
+# -> pip install -U email-validator
 # ==================================================================
 # ==================================================================
 # 모듈 로딩
@@ -8,7 +8,7 @@
 from pydantic import BaseModel, Field
 from langchain_core.tools import StructuredTool
 
-# 1) 입력 스키마 정의
+# 1) 입력 스키마 정의 : 유효성 검사(정해진 규칙에 맞는 데이터 여부 체크용)
 class CalculatorInput(BaseModel):
     expression: str = Field(
         description="계산할 수식 문자열. 예: '12*(3+4)'"
@@ -28,3 +28,4 @@ calculator = StructuredTool.from_function(
     description="수학 계산이 필요할 때 사용하는 계산기",
     args_schema=CalculatorInput
 )
+

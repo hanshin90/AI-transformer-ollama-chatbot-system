@@ -15,6 +15,7 @@
 ## (4) create_agent로 Agent 생성
 ## (5) agent.invoke로 질문 실행
 ## (6) 출력
+## -> pip install -U langchain-chroma
 ## ==========================================================
 import os
 import sys
@@ -27,7 +28,7 @@ from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
 from tools.rag_tool import rag_search
 
-LLM_MODEL = "qwen2.5:7b"
+LLM_MODEL = "llama3.1:latest" #"qwen2.5:7b"
 
 
 ## =========================================================
