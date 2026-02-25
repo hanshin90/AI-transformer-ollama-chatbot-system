@@ -1,0 +1,4 @@
+Tools 개념
+- Tool은 Agent가 외부 기능을 실행하기 위한 인터페이스(함수 계약)이다.
+- Tool 설명(description)이 정확할수록 LLM이 올바르게 Tool을 선택한다.
+- 예: 검색, 계산, 파일 읽기, DB 조회, API 호출 등.
