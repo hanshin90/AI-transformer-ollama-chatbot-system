@@ -1,2 +1,2 @@
-# AI-
+# AI-transformer ollama chatbot system
 경북대학교 26-02-23 ~ 26-02-27 실습
