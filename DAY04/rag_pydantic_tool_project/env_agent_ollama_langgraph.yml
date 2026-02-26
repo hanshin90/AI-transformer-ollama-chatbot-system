@@ -1,0 +1,20 @@
+name: agent_ollama_langgraph
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # 핵심: langchain-core는 1.0 미만(=langchain/커뮤니티 충돌 방지)
+      - "langchain-core>=0.3.76,<1.0"
+
+      # Ollama 연동 (ChatOllama)
+      - "langchain-ollama>=0.3.10,<1.0"
+
+      # LangGraph는 1.0 미만으로 (core 1.x 끌어올리는 문제 방지)
+      - "langgraph<1.0"
+
+      # 유틸
+      - python-dotenv
+      - pydantic
+      - requests

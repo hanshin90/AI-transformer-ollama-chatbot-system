@@ -1,0 +1,22 @@
+# LangChain core stack (0.3.x 계열 고정)
+langchain>=0.3,<1.0
+langchain-core>=0.3.76,<1.0
+langchain-community>=0.3,<1.0
+
+# Ollama 연동
+langchain-ollama>=0.3.10,<1.0
+
+# LangGraph (있어도 되고 없어도 됨)
+langgraph<1.0
+
+# Validation
+pydantic>=2.5,<3.0
+email-validator
+
+# RAG
+sentence-transformers
+chromadb
+pypdf
+
+# PDF 생성(예제용)
+reportlab
